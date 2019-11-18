@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-07 15:48:56
- * @LastEditTime: 2019-11-15 10:57:48
- * @LastEditors: 熊小兜
+ * @LastEditTime: 2019-11-15 20:03:25
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \app\src\components\banner.vue
  -->
@@ -43,7 +43,7 @@ export default {
     }
   },
    created() {
-      fetch('/api/hosrtiy')
+      fetch('/api/order/dd?uid=')
       .then(res=>{
         return res.json();
       })

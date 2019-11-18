@@ -1,8 +1,8 @@
 <!--
  * @Author: 熊小兜
  * @Date: 2019-11-11 09:25:52
- * @LastEditors: 熊小兜
- * @LastEditTime: 2019-11-14 21:11:56
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-15 20:46:52
  * @Description: 
  -->
 <template>
@@ -11,10 +11,10 @@
            <img src="../assets/img/logo.png" class="image">
         </div>
         <div class="input-group">
-            <input type="text" id="username" class="form-control" placeholder="电话号码" aria-describedby="basic-addon2">
+            <input type="text" id="username" class="form-control" placeholder="电话号码" aria-describedby="basic-addon2" v-model="name">
         </div>
         <div class="input-group">
-                <input type="text" class="form-control" placeholder="请输入密码" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="请输入密码" aria-describedby="basic-addon1" v-model="password">
         </div>
         <div class="input-group">
             <input type="text" id="userpass" class="form-control" placeholder="确认密码" aria-describedby="basic-addon1">
@@ -34,22 +34,47 @@ export default {
      name: 'Login',
   	data () {
     	return {
-		username:''
+		name:'',
+		password:''
     	}
 	  },
   methods:{
-    loginCheck(){
-        localStorage.setItem('username',this.username);
-        Toast({
-          message: '登录成功！',
-          position: 'top',
-          duration: 1000
-        });
-        setTimeout(()=>{
-          let str = "/MinePage";
-          this.$router.push({path:str});
-        },1100);          
-    }
+   // loginCheck(){
+        // localStorage.setItem('username',this.username);
+        // Toast({
+        //   message: '登录成功！',
+        //   position: 'top',
+        //   duration: 1000
+        // });
+        // setTimeout(()=>{
+        //   let str = "/MinePage";
+        //   this.$router.push({path:str});
+        // },1100);          
+	//},
+	loginCheck(){
+			   let tel="";
+			   let pass="";
+			   let n=this.name+'';
+			   let p=this.password+'';
+			 fetch('/api/user/login?tel='+n+'&'+"pass="+p,{
+                method:"post"
+            })
+            .then(res=>{
+                return res.json();
+            })
+            .then(data=>{
+				 console.log(data)
+                if(data.success == true){
+					setTimeout(()=>{
+						let str = "/MinePage";
+						this.$router.push({path:str});
+					},1100);
+					}
+					})	
+					.catch(err=>{
+						console.log(err);
+					})
+			}
   }
 }
 </script>

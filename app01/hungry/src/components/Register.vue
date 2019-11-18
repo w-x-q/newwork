@@ -1,8 +1,8 @@
 <!--
  * @Author: 熊小兜
  * @Date: 2019-11-11 09:25:52
- * @LastEditors: 熊小兜
- * @LastEditTime: 2019-11-13 17:41:39
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-15 17:18:27
  * @Description: 
  -->
 <template>
@@ -11,13 +11,11 @@
            <img src="../assets/img/logo.png" class="image">
         </div>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="电话号码"
-			
-			>
+            <input type="text" class="form-control" placeholder="电话号码" v-model="name">
 			
         </div>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="密码" aria-describedby="basic-addon1" v-model="password">
         </div>
         <div class="input-group">
             <input type="text" class="form-control" placeholder="确认密码" aria-describedby="basic-addon1">
@@ -34,23 +32,41 @@ export default {
      name: 'Register',
   	data () {
     	return {
-        username:''
+		name:'',
+		password:''
     	}
 	  }
 	  ,
 	  methods: {
-		  
 		   registerCheck(){
-				localStorage.setItem('username',this.username);
-				Toast({
-				message: '注册成功！',
-				position: 'top',
-				duration: 1000
-				});
-				setTimeout(()=>{
-				let str = "/LoginPage";
-				this.$router.push({path:str});
-				},1100);          
+			   let username="";
+			   let pass="";
+			   let n=this.name+'';
+			   let p=this.password+'';
+			 fetch('/api/user/register?username='+n+'&'+"pass="+p,{
+                method:"post"
+            })
+            .then(res=>{
+                return res.json();
+            })
+            .then(data=>{
+				 console.log(data)
+                if(data.success == true){
+    
+                    // alert("注册成功")
+					setTimeout(()=>{
+						let str = "/LoginPage";
+						this.$router.push({path:str});
+					},1100);
+
+					// this.$router.push({path:"/RegisterTwo/"+mg});
+						}else{
+							alert("亲：验证码过期")
+						}
+					})	
+					.catch(err=>{
+						console.log(err);
+					})
 			}
  	 }
 }

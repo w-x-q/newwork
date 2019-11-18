@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-07 15:48:56
- * @LastEditTime: 2019-11-15 10:56:15
- * @LastEditors: 熊小兜
+ * @LastEditTime: 2019-11-15 19:38:47
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \app\src\components\banner.vue
  -->
@@ -38,15 +38,15 @@ export default {
    created() {
     console.log(this.id)
       //fetch('/api/goods/all/'+this.foods)
-      fetch('/api/goodsall')//jsonsever
+      fetch('/api/goods/all?shopsid='+this.shopsid)//jsonsever
       .then(res=>{
         return res.json();
       })
       .then(data=>{
            
-        let ddd=data[this.shopsid];//jsonsever
+        let ddd=data.rows;//jsonsever
         this.foods = ddd;
-        console.log(foods)
+     
             
      })
      .catch(err=>{

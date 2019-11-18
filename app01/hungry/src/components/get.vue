@@ -2,8 +2,8 @@
  * @Descripttion: "轮播图"
  * @version: v1.0.0
  * @Date: 2019-11-06 14:35:10
- * @LastEditors: 熊小兜
- * @LastEditTime: 2019-11-15 10:52:54
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-15 17:44:11
  -->
 <template>
 
@@ -37,13 +37,15 @@ export default {
     }
   },
   created() {
-      fetch('/api/ziqu')
+    //   fetch('/api/ziqu')
+      fetch('/api/index/ziqu')
       .then(res=>{
         return res.json();
       })
       .then(data=>{
           let funcName = this.obj[this.type];
-          this.shops = data;
+        //   this.shops = data;
+          this.shops = data.rows;
         //   console.log(this.shops);
      })
      .catch(err=>{

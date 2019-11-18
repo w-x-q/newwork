@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-07 15:48:56
- * @LastEditTime: 2019-11-14 15:32:15
+ * @LastEditTime: 2019-11-15 15:22:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \app\src\components\banner.vue
  -->
 <template>
    <div>
-     <span v-for="(ti,index) in tit" :key="index" @touchstart="changecolor(index)"  v-bind:class="{list:isCompletes[index]}">{{ti}}</span>
+     <span v-for="(item,index) in tits" :key="index" @touchstart="changecolor(index)"  v-bind:class="{list :item.isCompletes}">{{item.tit}}</span>
      <hr>
    </div>
 </template>
@@ -17,25 +17,31 @@ export default {
   name: '',
   data () {
     return { 
-       tit:[
-         "点餐",
-         "评价",
-         "商家"
-       ] ,
-        isCompletes:[
-           true,false,false
-       ] 
+       tits:[
+         {
+           tit:"点餐",
+           isCompletes:true
+         },
+          {
+           tit:"评价",
+            isCompletes:false
+         },
+          {
+           tit:"商家",
+            isCompletes:false
+         }
+       ],
     }
   },
   components:{
   },
   methods:{
-        changecolor(index){
-            for(let index in this.isCompletes){
-            this.isCompletes[index]  = false;
+        changecolor(i){
+          // console.log(i)
+          for(let index in this.tits){
+             this.tits[index].isCompletes = false;
           }
-          this.isCompletes[index] =  true;
-          console.log(index)
+          this.tits[i].isCompletes =  true;
         }
     } 
 }

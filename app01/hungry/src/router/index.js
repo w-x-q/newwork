@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2019-11-06 17:22:32
- * @LastEditTime: 2019-11-15 08:47:47
- * @LastEditors: 熊小兜
+ * @LastEditTime: 2019-11-15 21:31:59
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \zhiwuyishengf:\app\src\router\index.js
  */
@@ -21,6 +21,7 @@ import Index from '@/pages/Index';
 import LoginPage from '@/pages/LoginPage';
 import Registerpage from '@/pages/Registerpage';
 import page from '@/pages/page';
+import titlepage from '@/pages/titlepage';
 
 Vue.use(Router)
 
@@ -86,6 +87,12 @@ export default new Router({
       path: '/shopping',
       name: 'shopping',
       component: shopping
+    },
+    {
+      path: '/titlepage:arr',
+      name: 'titlepage',
+      component: titlepage,
+      props:true
     }
   ]
 })

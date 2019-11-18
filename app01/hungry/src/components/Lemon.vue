@@ -3,7 +3,7 @@
  * @Author: losn
  * @Date: 2019-11-09 15:34:46
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-11-15 10:52:04
+ * @LastEditTime: 2019-11-15 20:08:15
  -->
 <template>
   <div>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="count">
-                   {{list.count}} 
+                   {{list.row}} 
         </div>
         <div class="money">
                     {{list.price}}

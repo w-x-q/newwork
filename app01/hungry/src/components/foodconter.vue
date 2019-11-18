@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-07 15:48:56
- * @LastEditTime: 2019-11-15 10:55:49
- * @LastEditors: 熊小兜
+ * @LastEditTime: 2019-11-15 19:48:59
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \app\src\components\banner.vue
  -->
@@ -23,7 +23,7 @@
         <img :src="food.photo" alt="">
         <div class="title">
           <p class="name">{{food.goodname}}</p>
-		  <p class="shou">{{food.row}}</p>
+		  <p class="shou">面粉，食用油</p>
           <p class="shou">月售3000</p>
           <p class="xia"><span class="pice">￥{{food.price}}</span><span v-on:click="changecolor(food)"><img src="../assets/img/add.png" alt=""></span></p>
         </div>
@@ -50,15 +50,15 @@ export default {
   },
   created() {
     console.log("id"+this.shopsid)
-      fetch('/api/goodsall')//jsonsever
+      fetch('/api/goods/all?shopsid='+this.shopsid)//jsonsever
       .then(res=>{
         return res.json();
       })
       .then(data=>{
-        let ddd=data[this.shopsid];//jsonsever
+        let ddd=data.rows;//jsonsever
         this.foods = ddd;
 
-        console.log(this.foods)
+        console.log(data)
      })
      .catch(err=>{
        console.log(err);

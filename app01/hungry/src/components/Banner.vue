@@ -1,8 +1,8 @@
 <!--
  * @Author: 熊小兜
  * @Date: 2019-11-07 00:23:30
- * @LastEditors: 熊小兜
- * @LastEditTime: 2019-11-15 10:44:42
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-15 17:42:50
  * @Description:"轮播图"
  -->
 <template>
@@ -24,13 +24,15 @@ export default {
         }
     },
     created(){
-        fetch('/api/alllbt')
+        // fetch('/api/alllbt')
+        fetch('/api/index/alllbt')
         .then(res=>{
             console.log(res);
             return res.json();
         })
         .then(data=>{
-            this.imgs = data;
+            // this.imgs = data;
+            this.imgs = data.rows;
             console.log(data);
             this.$nextTick(()=>{
                  let mySwiper = new Swiper('.swiper-container',{

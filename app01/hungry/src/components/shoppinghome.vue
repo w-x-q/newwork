@@ -1,15 +1,15 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-07 15:48:56
- * @LastEditTime: 2019-11-15 10:59:21
- * @LastEditors: 熊小兜
+ * @LastEditTime: 2019-11-15 19:23:24
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \app\src\components\banner.vue
  -->
 <template>
 <div>
  <div class="box" v-for="(food,index) in  home"  :key="index">
-     <router-link  :to='"/food/"+food.id'  class="bian">
+     <router-link  :to='"/food/"+food.shopsid'  class="bian">
      <div class="boximg">
        <img :src="food.head" alt="">
        </div>
@@ -51,13 +51,13 @@ export default {
   components:{
   },
    created() {
-      fetch('/api/indexallshops')
+      fetch('/api/index/allshops')
       .then(res=>{
         return res.json();
       })
       .then(data=>{
-           this.home = data;
-           console.log(data);
+           this.home = data.rows;
+           console.log(data.rows);
      })
      .catch(err=>{
        console.log(err);

@@ -2,18 +2,18 @@
  * @Descripttion: "轮播图"
  * @version: v1.0.0
  * @Date: 2019-11-06 14:35:10
- * @LastEditors: 熊小兜
- * @LastEditTime: 2019-11-15 10:54:56
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-15 19:02:29
  -->
 <template>
     <div class="box">
          <div class="classBox">
              <ul>
-                 <li v-for="(item,index) in types" :key="index" @click="changetype(item.name)" >{{item.name}}</li>
+                 <li v-for="(item,index) in types" :key="index" @click="changetype(item.id)" >{{item.name}}</li>
              </ul>
          </div>
          <div class="contentBox">
-             <Tshops :typename="currtype"></Tshops>
+             <Tshops :typeid="currtype"></Tshops>
          </div>
     </div>  
 </template>
@@ -25,28 +25,41 @@ import axios from 'axios';
 export default {
   name: 'Classify',
   data () {
-    return {
-       types:[],
-       currtype:""
+   return {
+       types:[
+            {
+                "id":"1",
+                "name":"综合"
+            },{
+                "id":"2",
+                "name":"距离"
+            },{
+                "id":"3",
+                "name":"销量"
+            }
+       ],
+       currtype:"3"
     }
   },
   components:{
       Tshops
   },
-  created(){
-    axios.get('/type')
-    .then((response)=> {
+//   created(){
+//     axios.get('/type')
+//     .then((response)=> {
         
-        this.types = response.data;
-        this.currtype = this.types[0].name;//把拿到的类型的第一个赋给当前类型。
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-  },
+//         this.types = response.data;
+//         this.currtype = this.types[0].name;//把拿到的类型的第一个赋给当前类型。
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     });
+//   },
   methods:{
-      changetype(typename){
-          this.currtype = typename;
+      
+      changetype(typeid){
+          console.log(typeid);
+          this.currtype = typeid;
       }
   }
 }

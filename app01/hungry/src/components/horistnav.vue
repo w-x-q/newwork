@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-07 15:48:56
- * @LastEditTime: 2019-11-15 10:58:00
- * @LastEditors: 熊小兜
+ * @LastEditTime: 2019-11-15 15:31:07
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \app\src\components\banner.vue
  -->
@@ -23,9 +23,25 @@ export default {
   data () {
  
     return {   
-      types:[
-      ],
-       currtype:"",
+       types:[
+        {
+            "id":"002",
+            "name":"待付款"
+        },
+        {
+            "id":"003",
+            "name":"待使用"
+        },
+        {
+            "id":"004",
+            "name":"待评价"
+        },
+        {
+            "id":"005",
+            "name":"退款/售后"
+        }
+    ],
+       currtype:"待付款",
        isCompletes:[
            true,false,false,false
        ]
@@ -35,19 +51,19 @@ export default {
   components:{
     horistcar
   } ,
-   created() {
-      fetch('/api/types')
-      .then(res=>{
-        return res.json();
-      })
-      .then(data=>{
-          this.types = data;
-          this.currtype = this.types[0].name;
-     })
-     .catch(err=>{
-       console.log(err);
-     })
-  },
+  //  created() {
+  //     fetch('/api/types')
+  //     .then(res=>{
+  //       return res.json();
+  //     })
+  //     .then(data=>{
+  //         this.types = data;
+  //         this.currtype = this.types[0].name;
+  //    })
+  //    .catch(err=>{
+  //      console.log(err);
+  //    })
+  // },
   methods:{
      changetype(typename,i){
           console.log(typename);

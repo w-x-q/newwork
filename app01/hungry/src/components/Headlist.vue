@@ -1,8 +1,8 @@
 <!--
  * @Author: 熊小兜
  * @Date: 2019-11-12 19:13:43
- * @LastEditors: 熊小兜
- * @LastEditTime: 2019-11-15 10:08:45
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-15 22:00:02
  * @Description: 
  -->
 <template>
@@ -12,8 +12,8 @@
         </div>
         <div class="center">
             <div class="boxl" v-for="(headlist,index) in headlists" :key="index"  >
-                <img  class="imgs" :src="headlist.src" alt="">
-                <p>{{headlist.name}}</p>
+                <img  class="imgs" :src="headlist.photo" alt="">
+                <p>{{headlist.csname}}</p>
                 <div class="mon">
                     <span>￥{{headlist.price}}</span>
                     <img class="img" src="../assets/img/d1.jpg" alt="">
@@ -41,12 +41,12 @@ export default {
         }
     },
     created(){
-        fetch('/api/headlist')
+        fetch('/api/cs/all')
         .then(res=>{
             return res.json();
         })
         .then(data=>{
-             this.headlists = data;
+             this.headlists = data.rows;
         })
         .catch(err=>{
             console.log(err);

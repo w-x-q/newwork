@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-11-06 17:22:32
- * @LastEditTime: 2019-11-14 23:26:47
+ * @LastEditTime: 2019-11-15 17:02:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \zhiwuyishengf:\app\config\index.js
@@ -20,7 +20,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': { 
-        target: 'http://localhost:3000', //替换成啥 
+        target: 'http://10.12.151.7:8080', //替换成啥 
         changeOrigin: true,
          pathRewrite: { '^/api': '' 
         //重写接口，去掉/api 

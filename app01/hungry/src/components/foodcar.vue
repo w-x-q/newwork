@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-08 16:08:49
- * @LastEditTime: 2019-11-15 03:33:13
+ * @LastEditTime: 2019-11-15 20:04:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \app\src\pages\food.vue
@@ -25,7 +25,7 @@
                         <span class="ico" @touchstart="reduceCount(index)"><img src="../assets/img/jia.png" alt=""></span>
                       
                         <span class="count">
-                            <input class="count" type="button" v-model="foo.count" style="width:0.2rem;">
+                            <input class="count" type="button" v-model="foo.row" style="width:0.2rem;">
                         </span>
                         <span class="ico"  @touchstart="addCount(index)"><img src="../assets/img/add.png" alt=""></span>
                   </span>
@@ -61,14 +61,14 @@ export default {
         },
         addCount(index){
           console.log(index);
-          this.food[index].count++;
+          this.food[index].row++;
       },
      reduceCount(index){
-          if(this.food[index].count <= 1){
-              this.food[index].count=1;
+          if(this.food[index].row <= 1){
+              this.food[index].row=1;
               return;
           }
-          this.food[index].count--;
+          this.food[index].row--;
       },
      qingkong(food){
           this.food={}
